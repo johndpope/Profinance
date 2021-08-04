@@ -53,7 +53,7 @@
   "scripts": {
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
-    "start-dev": "npm run build-client-watch & npm run start-server",
+    "start": "npm run build-client-watch & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
   },
   "eslintConfig": {
