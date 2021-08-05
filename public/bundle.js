@@ -11011,16 +11011,6 @@ function AuthForm() {
       password = _useState6[0],
       setPassword = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      error = _useState8[0],
-      setError = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState10 = _slicedToArray(_useState9, 2),
-      emailError = _useState10[0],
-      setEmailError = _useState10[1];
-
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.user;
   });
@@ -11029,22 +11019,9 @@ function AuthForm() {
     dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.me)());
   }, [dispatch]);
 
-  var isEmailValid = function isEmailValid(email) {
-    // eslint-disable-next-line no-useless-escape
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  };
-
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-
-    if (!email || !password) {
-      setError(true);
-    } else if (!isEmailValid(email)) {
-      setEmailError(true);
-    } else {
-      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.auth)(email, password, method));
-    }
+    dispatch((0,_store__WEBPACK_IMPORTED_MODULE_1__.auth)(email, password, method));
   };
 
   var handleKeyDown = function handleKeyDown(e) {
@@ -11075,7 +11052,7 @@ function AuthForm() {
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: handleSubmit
-  }, method)), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "email and/or password required"), user.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "incorrect email and/or password"), emailError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "email address must be valid"), method === 'login' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Don't have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, method)), user.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.error), method === 'login' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Don't have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: function onClick() {
       return setMethod('signup');
     }
@@ -11238,7 +11215,7 @@ var PlaidLogin = function PlaidLogin() {
               return axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/plaid/exchange_public_token', {
                 public_token: public_token,
                 user: user
-              }).then(window.location.href = '/home');
+              }).then(window.location.href = '/');
 
             case 2:
               res = _context2.sent;
@@ -11292,10 +11269,8 @@ __webpack_require__.r(__webpack_exports__);
 function UserHome() {
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.user;
-  });
-  var accounts = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    return state.plaid.accounts;
-  });
+  }); // const accounts = useSelector(state => state.plaid.accounts)
+
   var transactions = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.plaid.transactions;
   });
@@ -11360,7 +11335,7 @@ function Routes(_ref) {
   var user = _ref.user;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, user._id && user.accessToken && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
     exact: true,
-    path: "/home",
+    path: "/",
     component: _components__WEBPACK_IMPORTED_MODULE_1__.UserHome
   })), user._id && !user.accessToken && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
     component: _components__WEBPACK_IMPORTED_MODULE_1__.PlaidLogin
@@ -11657,8 +11632,14 @@ var auth = function auth(email, password, method) {
 
             case 9:
               try {
-                dispatch(getUser(res.data));
-                method === 'login' ? _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/home') : _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/plaid-login');
+                if (res.data.error) {
+                  dispatch(getUser({
+                    error: res.data.error
+                  }));
+                } else {
+                  dispatch(getUser(res.data));
+                  method === 'login' ? _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/') : _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/plaid-login');
+                }
               } catch (dispatchOrHistoryErr) {
                 console.error(dispatchOrHistoryErr);
               }

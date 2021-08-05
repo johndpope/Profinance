@@ -5,14 +5,13 @@ import '../../public/styles/user-home.css'
 
 export default function UserHome() {
   const user = useSelector(state => state.user)
-  const accounts = useSelector(state => state.plaid.accounts)
+  // const accounts = useSelector(state => state.plaid.accounts)
   const transactions = useSelector(state => state.plaid.transactions)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(me())
     dispatch(fetchTransactions())
   }, [dispatch])
-
   const checkAmount = (num) => {
     if(num < 0) {
       return 'green'

@@ -7,10 +7,10 @@ router.post('/login', async (req, res, next) => {
     const user = await User.findOne({email: req.body.email})
     if (!user) {
       console.log('No such user found:', req.body.email)
-      res.status(401).send('Wrong email and/or password')
+      res.json({error: 'Wrong email and/or password'})
     } else if (user.password !== req.body.password) {
       console.log('Incorrect password for user:', req.body.email)
-      res.status(401).send('Wrong email and/or password')
+      res.json({error: 'Wrong email and/or password'})
     } else {
       req.login(user, err => (err ? next(err) : res.json(user)))
     }
@@ -20,14 +20,19 @@ router.post('/login', async (req, res, next) => {
 })
 
 router.post('/signup', async (req, res, next) => {
+  const isEmailValid = (email) => {
+    return (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))
+  }
   try {
     const user = await User.findOne({email: req.body.email})
-    if(!user){
+    if (!isEmailValid(req.body.email)) {
+      res.json({error: 'Please enter a valid email address'})
+    } else if(!user){
       const newUser = await new User(req.body).save();
       req.login(newUser, err => (err ? next(err) : res.json(newUser)))
     } else if(user.email === req.body.email) {
       console.log('User already exists:', req.body.email)
-      res.status(401).send({message: 'User already exists'})
+      res.json({error: 'User already exists'})
     }
   } catch (error) {
     next(error)

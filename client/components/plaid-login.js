@@ -20,7 +20,7 @@ const PlaidLogin = () => {
   const onSuccess = useCallback(async (public_token, metadata) => {
     // eslint-disable-next-line no-unused-vars
     const res = await axios.post('/api/plaid/exchange_public_token', {public_token, user})
-    .then(window.location.href = '/home') 
+    .then(window.location.href = '/')
   },[user]);
 
   return token === null ? (

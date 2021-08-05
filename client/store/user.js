@@ -39,8 +39,12 @@ export const auth = (email, password, method) => async dispatch => {
   }
 
   try {
+    if(res.data.error) {
+      dispatch(getUser({error: res.data.error}))
+    } else {
     dispatch(getUser(res.data))
-    method === 'login' ? history.push('/home') : history.push('/plaid-login')
+    method === 'login' ? history.push('/') : history.push('/plaid-login')
+    }
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }

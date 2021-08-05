@@ -6,8 +6,6 @@ export default function AuthForm() {
   const [method, setMethod] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(false)
-  const [emailError, setEmailError] = useState(false)
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
@@ -15,21 +13,9 @@ export default function AuthForm() {
     dispatch(me())
   }, [dispatch])
 
-  const isEmailValid = (email) => {
-    // eslint-disable-next-line no-useless-escape
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return re.test(String(email).toLowerCase())
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!email || !password) {
-      setError(true)
-    } else if(!isEmailValid(email)){
-       setEmailError(true)
-    } else {
-      dispatch(auth(email, password, method))
-    }
+    dispatch(auth(email, password, method))
   }
 
   const handleKeyDown = (e) => {
@@ -55,9 +41,7 @@ export default function AuthForm() {
       <div>
         <button onClick={handleSubmit}>{method}</button>
       </div>
-      {error && <p>email and/or password required</p>}
-      {user.error && <p>incorrect email and/or password</p>}
-      {emailError && <p>email address must be valid</p>}
+      {user.error && <p>{user.error}</p>}
       {method === 'login' ? (
         <p>Don't have an account?<span /> <button onClick={() => setMethod('signup')}>Register</button></p>
       ) : (

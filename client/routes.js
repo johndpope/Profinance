@@ -7,7 +7,7 @@ export default function Routes({ user }) {
     <Switch>
       {user._id && user.accessToken && (
         <Switch>
-          <Route exact path="/home" component={UserHome} />
+          <Route exact path="/" component={UserHome} />
         </Switch>
       )}
       {user._id && !user.accessToken && (
@@ -18,6 +18,7 @@ export default function Routes({ user }) {
       <Switch>
         <Route exact path="/" component={AuthForm} />
       </Switch>
+
     </Switch>
   )
 }
