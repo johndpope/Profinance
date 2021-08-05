@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { me, fetchTransactions } from '../store'
+import '../../public/styles/user-home.css'
 
 export default function UserHome() {
   const user = useSelector(state => state.user)
+  const accounts = useSelector(state => state.plaid.accounts)
   const transactions = useSelector(state => state.plaid.transactions)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -16,7 +18,6 @@ export default function UserHome() {
       return 'green'
     } else return 'red'
   }
-
   return (
     <div>
       <h1>Welcome: <span />{user.email}</h1>

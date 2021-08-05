@@ -9,7 +9,9 @@ export default function Navbar({ user }) {
     <nav>
       {user._id && (
         <div>
-          <button onClick={() => dispatch(logout())}>Logout</button>
+          <h1>App Name <span />
+            <button onClick={() => dispatch(logout())}>Logout</button>
+            </h1>
         </div>
       )}
     </nav>

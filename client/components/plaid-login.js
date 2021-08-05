@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useSelector } from 'react-redux'
 import { PlaidLink } from "react-plaid-link";
 import axios from 'axios';
 
 const PlaidLogin = () => {
+  const user = useSelector(state => state.user)
   const [token, setToken] = useState(null);
   useEffect(() => {
     async function createLinkToken() {
@@ -17,9 +19,9 @@ const PlaidLogin = () => {
 
   const onSuccess = useCallback(async (public_token, metadata) => {
     // eslint-disable-next-line no-unused-vars
-    const res = await axios.post('/api/plaid/exchange_public_token', {public_token})
-    .then(window.location.reload()) 
-  },[]);
+    const res = await axios.post('/api/plaid/exchange_public_token', {public_token, user})
+    .then(window.location.href = '/home') 
+  },[user]);
 
   return token === null ? (
     <div className="loader"></div>

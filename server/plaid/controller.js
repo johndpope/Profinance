@@ -37,10 +37,11 @@ const swapPublicToken = async (req, res) => {
   //accessToken
   try {
     const { public_token } = req.body;
+    const { _id } = req.body.user;
     const tokenResponse = await client.exchangePublicToken(public_token)
     ACCESS_TOKEN = tokenResponse.access_token
     // eslint-disable-next-line no-unused-vars
-    const user = await User.updateOne({accessToken: ACCESS_TOKEN})
+    const user = await User.where({_id}).update({accessToken: ACCESS_TOKEN})
   } catch (e) {
     // Display error on client
     return res.send({ error: e.message });

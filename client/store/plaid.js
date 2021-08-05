@@ -33,7 +33,7 @@ export const fetchTransactions = () => async dispatch => {
 export default function reducer(state = defaultPlaid, action) {
   switch (action.type) {
     case GET_TRANSACTIONS:
-      return action.transactions
+      return {...action.transactions}
     default:
       return state
   }
