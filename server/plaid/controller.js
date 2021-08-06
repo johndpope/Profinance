@@ -59,8 +59,24 @@ const getTransactions = (req, res) => {
   )
 }
 
+const getAccountTransactions = (req, res) => {
+  ACCESS_TOKEN = req.user.accessToken
+  const account_ids  = req.body.accountId
+
+  console.log(account_ids)
+  let startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
+  let endDate = moment().format('YYYY-MM-DD')
+  client.getTransactions(ACCESS_TOKEN, startDate, endDate, 
+    {count: 250, offset: 0, account_ids: [account_ids]})
+    .then((resToken) => {
+      res.json({accountTransactions: resToken})  
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports = {
   getTransactions,
   createLinkToken,
-  swapPublicToken
+  swapPublicToken,
+  getAccountTransactions
 }

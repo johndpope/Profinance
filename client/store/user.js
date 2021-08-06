@@ -25,6 +25,7 @@ export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
     dispatch(getUser(res.data || defaultUser))
+    // !res.data ? history.push('/login') : dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
   }
@@ -54,7 +55,7 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
-    history.push('/')
+    history.push('/login')
   } catch (err) {
     console.error(err)
   }

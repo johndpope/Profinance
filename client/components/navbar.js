@@ -7,12 +7,18 @@ export default function Navbar({ user }) {
 
   return (
     <nav>
-      {user._id && (
-        <div>
+      {user._id ? (
+        <nav>
           <h1>App Name <span />
             <button onClick={() => dispatch(logout())}>Logout</button>
             </h1>
-        </div>
+            <hr />
+        </nav>
+      ) : (
+        <nav>
+        <h1>App Name</h1>
+        <hr />
+      </nav>
       )}
     </nav>
   )

@@ -27,6 +27,8 @@ router.post('/signup', async (req, res, next) => {
     const user = await User.findOne({email: req.body.email})
     if (!isEmailValid(req.body.email)) {
       res.json({error: 'Please enter a valid email address'})
+    } else if(!req.body.password) {
+      res.json({error: 'Please enter a password'})
     } else if(!user){
       const newUser = await new User(req.body).save();
       req.login(newUser, err => (err ? next(err) : res.json(newUser)))
