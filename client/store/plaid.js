@@ -35,7 +35,6 @@ export const fetchTransactions = () => async dispatch => {
 export const fetchAccountTransactions = (accountId) => async dispatch => {
   try {
     const res = await axios.post('/api/plaid/getAccountTransactions', {accountId})
-    // console.log(res.data.accountTransactions)
     dispatch(getAccountTransactions(res.data.accountTransactions))
   } catch (err) {
     console.error(err)

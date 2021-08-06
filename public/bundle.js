@@ -11326,7 +11326,7 @@ var PlaidLogin = function PlaidLogin() {
               return axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/plaid/exchange_public_token', {
                 public_token: public_token,
                 user: user
-              }).then(window.location.href = '/');
+              }).then(window.location.href = '/home');
 
             case 2:
               res = _context2.sent;
@@ -11474,13 +11474,15 @@ __webpack_require__.r(__webpack_exports__);
 
 function Routes(_ref) {
   var user = _ref.user;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, user._id && user.accessToken && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
     exact: true,
     path: "/",
-    component: _components__WEBPACK_IMPORTED_MODULE_1__.UserHome
-  })), user._id && !user.accessToken && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
-    component: _components__WEBPACK_IMPORTED_MODULE_1__.PlaidLogin
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+    render: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+        to: "/login"
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
     exact: true,
     path: "/login",
     component: _components__WEBPACK_IMPORTED_MODULE_1__.Login
@@ -11488,6 +11490,12 @@ function Routes(_ref) {
     exact: true,
     path: "/sign-up",
     component: _components__WEBPACK_IMPORTED_MODULE_1__.SignUp
+  }), user._id && user.accessToken && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+    exact: true,
+    path: "/home",
+    component: _components__WEBPACK_IMPORTED_MODULE_1__.UserHome
+  })), user._id && !user.accessToken && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
+    component: _components__WEBPACK_IMPORTED_MODULE_1__.PlaidLogin
   })));
 }
 
@@ -11667,7 +11675,6 @@ var fetchAccountTransactions = function fetchAccountTransactions(accountId) {
 
             case 3:
               res = _context2.sent;
-              // console.log(res.data.accountTransactions)
               dispatch(getAccountTransactions(res.data.accountTransactions));
               _context2.next = 10;
               break;
@@ -11783,8 +11790,7 @@ var me = function me() {
 
             case 3:
               res = _context.sent;
-              dispatch(getUser(res.data || defaultUser)); // !res.data ? history.push('/login') : dispatch(getUser(res.data || defaultUser))
-
+              dispatch(getUser(res.data || defaultUser));
               _context.next = 10;
               break;
 
@@ -11841,7 +11847,7 @@ var auth = function auth(email, password, method) {
                   }));
                 } else {
                   dispatch(getUser(res.data));
-                  method === 'login' ? _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/') : _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/plaid-login');
+                  method === 'login' ? _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/home') : _history__WEBPACK_IMPORTED_MODULE_1__.default.push('/plaid-login');
                 }
               } catch (dispatchOrHistoryErr) {
                 console.error(dispatchOrHistoryErr);

@@ -25,7 +25,6 @@ export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
     dispatch(getUser(res.data || defaultUser))
-    // !res.data ? history.push('/login') : dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
   }
@@ -44,7 +43,7 @@ export const auth = (email, password, method) => async dispatch => {
       dispatch(getUser({error: res.data.error}))
     } else {
     dispatch(getUser(res.data))
-    method === 'login' ? history.push('/') : history.push('/plaid-login')
+    method === 'login' ? history.push('/home') : history.push('/plaid-login')
     }
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
