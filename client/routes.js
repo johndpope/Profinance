@@ -5,13 +5,11 @@ import { PlaidLogin, UserHome, SignUp, Login } from './components'
 export default function Routes({ user }) {
   return (
     <Switch>
-      <Route exact path="/" render={() => (
-        <Redirect to="/login"/>
-      )}/>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/sign-up" component={SignUp} />
       {user._id && user.accessToken && (
         <Switch>
+          <Route exact path="/login" render={() => (
+            <Redirect to="/home"/>
+          )}/>
           <Route exact path="/home" component={UserHome} />
         </Switch>
       )}
@@ -20,6 +18,11 @@ export default function Routes({ user }) {
           <Route component={PlaidLogin} />
         </Switch>
       )}
+        <Route exact path="/" render={() => (
+          <Redirect to="/login"/>
+        )}/>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/sign-up" component={SignUp} />
     </Switch>
   )
 }
