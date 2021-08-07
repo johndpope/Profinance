@@ -5,7 +5,7 @@ module.exports = router;
 //get all users
 router.get('/', async (req, res, next) => {
     try {
-      const users = await User.find().select('-password')
+      const users = await User.find().select('-password -accessToken')
       res.json(users);
     } catch (error) {
         next(error);   
