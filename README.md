@@ -1,6 +1,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/IanGelfand/financeapp?style=for-the-badge)](https://github.com/IanGelfand/financeapp/network)
 [![GitHub stars](https://img.shields.io/github/stars/IanGelfand/financeapp?style=for-the-badge)](https://github.com/IanGelfand/financeapp/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/IanGelfand/financeapp?style=for-the-badge)](https://github.com/IanGelfand/financeapp/issues)
+![Twitter URL](https://img.shields.io/twitter/url?color=blue&label=Linkedin&logo=Linkedin&logoColor=blue&style=for-the-badge&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fgelfandian%2F)
 <!-- ![LinkedIn](https://www.linkedin.com/in/gelfandian/) -->
 
 <!-- PROJECT LOGO -->
