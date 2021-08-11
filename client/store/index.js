@@ -5,10 +5,14 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import plaid from './plaid'
 
-const reducer = combineReducers({user, plaid })
-const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
-)
+const reducer = combineReducers({ user, plaid })
+//show redux store
+// const middleware = composeWithDevTools(
+//   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
+// )
+//dont show redux store
+const middleware = applyMiddleware(thunkMiddleware)
+
 const store = createStore(reducer, middleware)
 
 export default store

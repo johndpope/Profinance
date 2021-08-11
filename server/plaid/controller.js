@@ -12,10 +12,8 @@ const client = new plaid.Client({
 
 const createLinkToken =  async (req, res) => {
   try {
-    // Get the client_user_id by searching for the current user
     const user = await User.findById(req.user);
     const clientUserId = user._id;
-    // Create the link_token with all of your configurations
     const tokenResponse = await client.createLinkToken({
       user: {
         client_user_id: clientUserId,
@@ -28,22 +26,18 @@ const createLinkToken =  async (req, res) => {
     });
     res.json(tokenResponse);
   } catch (e) {
-    // Display error on client
     return res.send({ error: e.message });
   }
 }
 
 const swapPublicToken = async (req, res) => {
-  //accessToken
   try {
     const { public_token } = req.body;
     const { _id } = req.body.user;
     const tokenResponse = await client.exchangePublicToken(public_token)
     ACCESS_TOKEN = tokenResponse.access_token
-    // eslint-disable-next-line no-unused-vars
-    const user = await User.where({_id}).update({accessToken: ACCESS_TOKEN})
+    await User.where({_id}).updateOne({accessToken: ACCESS_TOKEN})
   } catch (e) {
-    // Display error on client
     return res.send({ error: e.message });
   }
 }

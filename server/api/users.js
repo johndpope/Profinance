@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User } = require('../db/models');
 module.exports = router;
 
-//get all users
 router.get('/', async (req, res, next) => {
     try {
       const users = await User.find().select('-password -accessToken')
@@ -12,10 +11,9 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-//get user by id
 router.get('/:id', async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id).select('-password');
+    const user = await User.findById(req.params.id).select('-password -accessToken');
     if (user) {
       res.json(user);
     } else {

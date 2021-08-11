@@ -5,7 +5,8 @@ const app = express()
 const morgan = require('morgan')
 const passport = require('passport')
 const compression = require('compression')
-const session = require('express-session')
+// const session = require('express-session')
+const session = require('cookie-session');
 const socketio = require('socket.io')
 const PORT = process.env.PORT || 3000
 const db = require('./db')
@@ -13,7 +14,6 @@ const { User } = require('./db/models')
 module.exports = app
 
 passport.serializeUser((user, done) => {done(null, user._id)})
-
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findById(id)
@@ -29,7 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(compression())
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'the cake is a lie',
   resave: true,
   saveUninitialized: true
 }));

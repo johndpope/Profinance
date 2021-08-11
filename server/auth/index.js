@@ -1,6 +1,19 @@
+const bcrypt = require('bcrypt')
 const router = require('express').Router()
 const { User } = require('../db/models')
 module.exports = router
+
+const isEmailValid = (email) => {
+  return (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))
+}
+
+const encryptPassword = (password) => {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+}
+
+const comparePassword = (password, hash) => {
+  return bcrypt.compareSync(password, hash)
+}
 
 router.post('/login', async (req, res, next) => {
   try {
@@ -8,7 +21,7 @@ router.post('/login', async (req, res, next) => {
     if (!user) {
       console.log('No such user found:', req.body.email)
       res.json({error: 'Wrong email and/or password'})
-    } else if (user.password !== req.body.password) {
+    } else if (comparePassword(user.password, req.body.password)) {
       console.log('Incorrect password for user:', req.body.email)
       res.json({error: 'Wrong email and/or password'})
     } else {
@@ -20,9 +33,6 @@ router.post('/login', async (req, res, next) => {
 })
 
 router.post('/signup', async (req, res, next) => {
-  const isEmailValid = (email) => {
-    return (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))
-  }
   try {
     const user = await User.findOne({email: req.body.email})
     if (!isEmailValid(req.body.email)) {
@@ -30,7 +40,10 @@ router.post('/signup', async (req, res, next) => {
     } else if(!req.body.password) {
       res.json({error: 'Please enter a password'})
     } else if(!user){
-      const newUser = await new User(req.body).save();
+      const newUser = await new User({
+        email: req.body.email,
+        password: encryptPassword(req.body.password)
+      }).save();
       req.login(newUser, err => (err ? next(err) : res.json(newUser)))
     } else if(user.email === req.body.email) {
       console.log('User already exists:', req.body.email)
@@ -43,7 +56,10 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/logout', (req, res) => {
   req.logout()
-  req.session.destroy()
+  //express session
+  // req.session.destroy()
+  //cookie session
+  req.session = null
   res.redirect('/')
 })
 
