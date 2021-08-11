@@ -49,7 +49,7 @@
 
 ### Built With
 
-* [Plaid](plaid.com)
+* [Plaid](https://plaid.com)
 * [React](https://reactjs.org)
 * [Redux](https://redux.js.org)
 * [Express](https://expressjs.com)
