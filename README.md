@@ -8,7 +8,7 @@
 <p align="center">
    <img src="https://github.com/IanGelfand/financeapp/blob/master/public/0b8908b63510393bc2c4c3346785b69c.png" alt="Logo">
   <p align="center">
-    <a href="https://iangelfand-finance.herokuapp.com">View Demo</a>
+    <a href="https://iangelfand-profinance.herokuapp.com">View Demo</a>
     ·
     <a href="https://github.com/IanGelfand/financeapp/issues">Report Bug</a>
     ·
