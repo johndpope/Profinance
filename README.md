@@ -92,7 +92,7 @@
     ```sh
     npm run build-client-watch
     ```
- 5. Head over to `localhost:3000`
+ 5. Head over to [localhost:3000](http://localhost:3000)
  6. When logging into plaid
     ```sh
     username: user_good
