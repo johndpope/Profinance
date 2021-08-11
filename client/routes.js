@@ -23,6 +23,7 @@ export default function Routes({ user }) {
         )}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/sign-up" component={SignUp} />
+        <Redirect from="/*" to="/" />
     </Switch>
   )
 }

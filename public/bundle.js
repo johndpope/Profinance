@@ -11504,6 +11504,9 @@ function Routes(_ref) {
     exact: true,
     path: "/sign-up",
     component: _components__WEBPACK_IMPORTED_MODULE_1__.SignUp
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
+    from: "/*",
+    to: "/"
   }));
 }
 
