@@ -3,6 +3,7 @@ import { auth, me } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import '../../../public/styles/auth-form.css'
 import history from '../../history'
+import googleLogo from '../../../public/google.png'
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -43,6 +44,11 @@ export default function Login() {
       </div>
       {user.error && <strong>{user.error}</strong>}
       <p>Don't have an account?<span /> <button onClick={() => history.push('/sign-up')}>Register</button></p>
+      
+      <a href="/auth/google">
+        <img src={googleLogo} alt="google" width="100" height="100" />
+        Sign in with google
+        </a>
     </div>
   )
 }

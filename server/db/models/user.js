@@ -7,10 +7,12 @@ const userSchema = new Schema({
     },
     password: { 
         type: String, 
-        required: true 
     },
     accessToken: { 
         type: String, 
+    },
+    googleId: {
+        type: String
     }
 }, {versionKey: false});
 

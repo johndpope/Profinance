@@ -10983,6 +10983,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_styles_auth_form_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/styles/auth-form.css */ "./public/styles/auth-form.css");
 /* harmony import */ var _public_styles_auth_form_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_styles_auth_form_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../history */ "./client/history.js");
+/* harmony import */ var _public_google_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../public/google.png */ "./public/google.png");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10994,6 +10995,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -11060,7 +11062,14 @@ function Login() {
     onClick: function onClick() {
       return _history__WEBPACK_IMPORTED_MODULE_4__.default.push('/sign-up');
     }
-  }, "Register")));
+  }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "/auth/google"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: _public_google_png__WEBPACK_IMPORTED_MODULE_5__.default,
+    alt: "google",
+    width: "100",
+    height: "100"
+  }), "Sign in with google"));
 }
 
 /***/ }),
@@ -15265,6 +15274,18 @@ module.exports = {
   decodePayload
 };
 
+
+/***/ }),
+
+/***/ "./public/google.png":
+/*!***************************!*\
+  !*** ./public/google.png ***!
+  \***************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "/public/google.png");
 
 /***/ }),
 
@@ -55072,6 +55093,26 @@ const Socket = _build_index_js__WEBPACK_IMPORTED_MODULE_0__.Socket;
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	!function() {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	}();
 /******/ 	
 /************************************************************************/
