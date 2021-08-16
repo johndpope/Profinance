@@ -3,14 +3,17 @@ import { auth, me } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import '../../../public/styles/auth-form.css'
 import history from '../../history'
+import Email from './auth-form-components/email'
+import Password from './auth-form-components/password'
+import SignupButton from './auth-form-components/signup-button'
+import ConfirmPassword from './auth-form-components/confirm-password'
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
-  // const [password1, setPassword1] = useState('')
-  // const [password2, setPassword2] = useState('')
 
   useEffect(() => {
     dispatch(me())
@@ -18,13 +21,11 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if(password1 === password2) {
-    //   setPassword(password1)
-    // } else {
-    //   console.log(user.error)
-    //   console.log('Passwords do not match')
-    // }
-    dispatch(auth(email, password, 'signup'))
+    if(password !== confirmPassword) {
+      alert('Passwords do not match')
+    } else {
+      dispatch(auth(email, password, 'signup'))
+    }
   }
 
   const handleKeyDown = (e) => {
@@ -33,30 +34,18 @@ export default function SignUp() {
     }
   }
   return (
-    <div onKeyDown={handleKeyDown}>
-      <div>
-        <label htmlFor="email">
-          <small>Email: </small>
-        </label>
-        <input placeholder="Email" name="email" type="text" onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="password">
-          <small>Password: </small>
-        </label>
-        <input placeholder="Password" name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
-      </div>
-      {/* <div>
-        <label htmlFor="password">
-          <small>Re-enter Password: </small>
-        </label>
-        <input placeholder="Password" name="password" type="password" onChange={(e) => setPassword2(e.target.value)} />
-      </div> */}
-      <div>
-        <button className="button" style={{'verticalAlign': "middle"}} onClick={handleSubmit}><span>Signup</span></button>
-      </div>
+    <div className='login-container' onKeyDown={handleKeyDown}>
+      <h1>Welcome to Profinance</h1>
+      <Email setEmail={setEmail} />
+      <Password setPassword={setPassword} />
+      <ConfirmPassword setConfirmPassword={setConfirmPassword} />
+      <SignupButton handleSubmit={handleSubmit} />
       {user.error && <strong>{user.error}</strong>}
+      <a href="/auth/google">
+        Sign in with google
+      </a>
       <p>Have an account?<span /> <button onClick={() => history.push('/login')}>Login</button></p>
     </div>
+    
   )
 }

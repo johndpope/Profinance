@@ -6,7 +6,7 @@ const userSchema = new Schema({
         required: true 
     },
     password: { 
-        type: String, 
+        type: String,
     },
     accessToken: { 
         type: String, 

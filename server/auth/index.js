@@ -19,12 +19,19 @@ router.post('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({email: req.body.email})
     if (!user) {
-      console.log('No such user found:', req.body.email)
+      console.log('User not found')
       res.json({error: 'Wrong email and/or password'})
-    } else if (comparePassword(user.password, req.body.password)) {
-      console.log('Incorrect password for user:', req.body.email)
+    } else if(!req.body.password) {
+      console.log('Wrong password')
       res.json({error: 'Wrong email and/or password'})
-    } else {
+    } else if(!user.password) { 
+      res.json({error: 'Wrong email and/or password'})
+    } else if(req.body.password && user.password ) {
+      res.json({error: 'Wrong email and/or password'})
+      if(comparePassword(user.password, req.body.password)) {
+        res.json({error: 'Wrong email and/or password'})
+      }
+    }else {
       req.login(user, err => (err ? next(err) : res.json(user)))
     }
   } catch (err) {
@@ -35,10 +42,15 @@ router.post('/login', async (req, res, next) => {
 router.post('/signup', async (req, res, next) => {
   try {
     const user = await User.findOne({email: req.body.email})
-    if (!isEmailValid(req.body.email)) {
-      res.json({error: 'Please enter a valid email address'})
+    if (!req.body.email) {
+      console.log('No email provided')
+      res.json({error: 'Please enter a email'})
     } else if(!req.body.password) {
+      console.log('No password provided')
       res.json({error: 'Please enter a password'})
+    } else if(!isEmailValid(req.body.email)) {
+      console.log('Email is not valid')
+      res.json({error: 'Please enter a valid email'})
     } else if(!user){
       const newUser = await new User({
         email: req.body.email,
@@ -46,9 +58,9 @@ router.post('/signup', async (req, res, next) => {
       }).save();
       req.login(newUser, err => (err ? next(err) : res.json(newUser)))
     } else if(user.email === req.body.email) {
-      console.log('User already exists:', req.body.email)
+      console.log('User already exists')
       res.json({error: 'User already exists'})
-    }
+    } 
   } catch (error) {
     next(error)
   }

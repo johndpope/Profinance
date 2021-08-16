@@ -9,14 +9,14 @@ export default function Navbar({ user }) {
     <nav>
       {user._id ? (
         <nav>
-          <h1>App Name <span />
+          <h1>Profinance <span />
             <button onClick={() => dispatch(logout())}>Logout</button>
             </h1>
             <hr />
         </nav>
       ) : (
         <nav>
-        <h1>App Name</h1>
+        <h1>Profinance</h1>
         <hr />
       </nav>
       )}

@@ -6,6 +6,7 @@ import { Router } from 'react-router-dom'
 import store from './store';
 import App from './App';
 import './socket'
+import './index.css'
 
 ReactDOM.render(
   <Provider store={store}>

@@ -18,15 +18,15 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     async (token, refreshToken, profile, done) => {
       const googleId = profile.id
       const email = profile.emails[0].value
-      const user = await User.findOne({ googleId })
-      if (user) {
-        done(null, user)
-      } else {
+      const user = await User.findOne({ email })
+      console.log(user)
+      if(!user) {
         const newUser = await User.create({ email, googleId })
         done(null, newUser)
+      } else if(user.password) {
+        done(null)
       }
-    }
-  )
+  })
 
   passport.use(strategy)
 
