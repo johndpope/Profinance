@@ -19,7 +19,6 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
       const googleId = profile.id
       const email = profile.emails[0].value
       const user = await User.findOne({ email })
-      console.log(user)
       if(!user) {
         const newUser = await User.create({ email, googleId })
         done(null, newUser)
