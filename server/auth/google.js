@@ -24,6 +24,8 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
         done(null, newUser)
       } else if(user.password) {
         done(null)
+      } else {
+        done(null, user)
       }
   })
 
