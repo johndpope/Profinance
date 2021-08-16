@@ -11336,11 +11336,15 @@ __webpack_require__.r(__webpack_exports__);
 function Navbar(_ref) {
   var user = _ref.user;
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, user._id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profinance ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, user._id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "/"
+  }, "Profinance"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: function onClick() {
       return dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.logout)());
     }
-  }, "Logout")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profinance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null)));
+  }, "Logout")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "/"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Profinance")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", null)));
 }
 
 /***/ }),
@@ -11432,7 +11436,6 @@ var PlaidLogin = function PlaidLogin() {
   }, []);
   var onSuccess = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)( /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(public_token, metadata) {
-      var res;
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -11444,9 +11447,6 @@ var PlaidLogin = function PlaidLogin() {
               }).then(window.location.href = '/home');
 
             case 2:
-              res = _context2.sent;
-
-            case 3:
             case "end":
               return _context2.stop();
           }
@@ -11462,9 +11462,7 @@ var PlaidLogin = function PlaidLogin() {
     className: "loader"
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_plaid_link__WEBPACK_IMPORTED_MODULE_2__.PlaidLink, {
     token: token,
-    onSuccess: onSuccess // onExit={...}
-    // onEvent={...}
-
+    onSuccess: onSuccess
   }, "Connect a bank account");
 };
 

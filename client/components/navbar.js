@@ -9,16 +9,18 @@ export default function Navbar({ user }) {
     <nav>
       {user._id ? (
         <nav>
-          <h1>Profinance <span />
-            <button onClick={() => dispatch(logout())}>Logout</button>
+          <div>
+            <h1><a href="/">Profinance</a> <span />
+              <button onClick={() => dispatch(logout())}>Logout</button>
             </h1>
             <hr />
+          </div>
         </nav>
       ) : (
         <nav>
-        <h1>Profinance</h1>
-        <hr />
-      </nav>
+          <a href='/'><h1>Profinance</h1></a>
+          <hr />
+        </nav>
       )}
     </nav>
   )

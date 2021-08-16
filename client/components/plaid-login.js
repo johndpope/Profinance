@@ -18,8 +18,7 @@ const PlaidLogin = () => {
   }, []);
 
   const onSuccess = useCallback(async (public_token, metadata) => {
-    // eslint-disable-next-line no-unused-vars
-    const res = await axios.post('/api/plaid/exchange_public_token', {public_token, user})
+    await axios.post('/api/plaid/exchange_public_token', {public_token, user})
     .then(window.location.href = '/home')
   },[user]);
 
@@ -29,8 +28,6 @@ const PlaidLogin = () => {
     <PlaidLink
       token={token}
       onSuccess={onSuccess}
-      // onExit={...}
-      // onEvent={...}
     >
       Connect a bank account
     </PlaidLink>
