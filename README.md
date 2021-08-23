@@ -84,6 +84,9 @@
    PLAID_SECRET=YourPlaidSecretKey
    PLAID_ENV=sandbox
    DB=YourMongoDB
+   GOOGLE_CALLBACK=/auth/google/callback
+   GOOGLE_CLIENT_ID=YourGoogleClientId
+   GOOGLE_CLIENT_SECRET=YourGoogleClientSecret
    ```
 4. Open two terminal windows
     ```sh
