@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-   <img src="https://github.com/IanGelfand/financeapp/blob/master/public/0b8908b63510393bc2c4c3346785b69c.png" alt="Logo">
+   <img src="https://github.com/IanGelfand/Profinance/blob/master/public/assets/logo.png" alt="Logo">
   <p align="center">
     <a href="https://iangelfand-profinance.herokuapp.com">View Demo</a>
     ·
