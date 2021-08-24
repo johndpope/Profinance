@@ -1,26 +1,20 @@
+const bcrypt = require('bcrypt')
+
 const router = require('express').Router();
 const { User } = require('../db/models');
 module.exports = router;
 
-router.get('/', async (req, res, next) => {
-    try {
-      const users = await User.find().select('-password -accessToken')
-      res.json(users);
-    } catch (error) {
-        next(error);   
-    }
-});
-
-router.get('/:id', async (req, res, next) => {
+const encryptPassword = (password) => {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+}
+//change user password
+router.post('/:id', async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id).select('-password -accessToken');
-    if (user) {
-      res.json(user);
-    } else {
-      res.status(404).json({
-        message: 'User not found'
-      });
-    }
+    await User.findById(req.params.id, (err, user) => {
+      user.password = encryptPassword(req.body.password)
+      user.save()
+    })
+    res.json();
   } catch (error) {
     next(error)
   }

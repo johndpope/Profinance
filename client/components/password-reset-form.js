@@ -1,24 +1,20 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 export default function PasswordResetForm() {
   const [email, setEmail] = useState('')
 
   const handleSubmit = async (e) => {
-    await fetch('/api/reset', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email
-      })
-    }).then(window.location.href = '/login')
+    await axios.post('/api/reset', {email})
+    .then(alert('Email Sent'))
+    .catch(err => console.log(err))
+    .then(window.location.href = '/login')
   }
 
   return (
     <div>
       <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <button onClick={() => handleSubmit(email)}>Reset</button>
+      <button onClick={() => handleSubmit(email)}>Send password reset email</button>
     </div>
   )
 }

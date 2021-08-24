@@ -15,7 +15,22 @@
   text-align: center;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"] {
+  margin: 10px;
+  padding: 5px;
+  font-size: 20px;
+  border-width: 5px;
+  outline: none;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+  text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+
+input[type="password"] {
   margin: 10px;
   padding: 5px;
   font-size: 20px;
@@ -42,4 +57,16 @@ input[type="text"], input[type="password"] {
   padding:17px 38px;
   text-decoration:none;
   text-shadow:0px 1px 0px #2f6627;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings > input {
+  border: 1px solid green;
 }
