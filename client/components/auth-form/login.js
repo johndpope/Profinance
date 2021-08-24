@@ -5,6 +5,7 @@ import '../../../public/styles/auth-form.css'
 import Email from './auth-form-components/email'
 import Password from './auth-form-components/password'
 import LoginButton from './auth-form-components/login-button'
+import PasswordReset from './auth-form-components/password-reset'
 import history from '../../history'
 
 export default function Login() {
@@ -32,6 +33,7 @@ export default function Login() {
       <h1>Welcome to Profinance</h1>
       <Email setEmail={setEmail} />
       <Password setPassword={setPassword} />
+      <PasswordReset />
       <LoginButton handleSubmit={handleSubmit} />
       {user.error && <strong>{user.error}</strong>}
       <a href="/auth/google">

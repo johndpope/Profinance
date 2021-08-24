@@ -7,7 +7,7 @@ export default function Navbar({ user }) {
 
   return (
     <nav>
-      {user._id ? (
+      {user._id && (
         <nav>
           <div>
             <h1><a href="/">Profinance</a> <span />
@@ -15,11 +15,6 @@ export default function Navbar({ user }) {
             </h1>
             <hr />
           </div>
-        </nav>
-      ) : (
-        <nav>
-          <a href='/'><h1>Profinance</h1></a>
-          <hr />
         </nav>
       )}
     </nav>
