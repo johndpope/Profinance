@@ -7,11 +7,11 @@ import plaid from './plaid'
 
 const reducer = combineReducers({ user, plaid })
 //show redux store
-const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
-)
+// const middleware = composeWithDevTools(
+//   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
+// )
 //dont show redux store
-// const middleware = applyMiddleware(thunkMiddleware)
+const middleware = applyMiddleware(thunkMiddleware)
 
 const store = createStore(reducer, middleware)
 

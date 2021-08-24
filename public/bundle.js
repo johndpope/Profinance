@@ -11783,12 +11783,12 @@ var reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   user: _user__WEBPACK_IMPORTED_MODULE_3__.default,
   plaid: _plaid__WEBPACK_IMPORTED_MODULE_4__.default
 }); //show redux store
+// const middleware = composeWithDevTools(
+//   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
+// )
+//dont show redux store
 
-var middleware = (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
-  collapsed: true
-}))); //dont show redux store
-// const middleware = applyMiddleware(thunkMiddleware)
-
+var middleware = (0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default);
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(reducer, middleware);
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
