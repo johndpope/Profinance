@@ -5,7 +5,7 @@ export default function PasswordResetForm() {
   const [email, setEmail] = useState('')
 
   const handleSubmit = async (e) => {
-    await axios.post('/api/reset', {email})
+    await axios.post('/api/request-reset', {email})
     .then(alert('Email Sent'))
     .catch(err => console.log(err))
     .then(window.location.href = '/login')

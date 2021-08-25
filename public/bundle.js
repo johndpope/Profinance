@@ -11476,7 +11476,7 @@ function PasswordResetForm() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/reset', {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/request-reset', {
                 email: email
               }).then(alert('Email Sent')).catch(function (err) {
                 return console.log(err);
@@ -11683,7 +11683,7 @@ function Settings() {
     if (password !== confirmPassword) {
       alert('Passwords do not match');
     } else {
-      axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/users/".concat(user._id), {
+      axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/users/change-password/".concat(user._id), {
         password: password
       }).then(alert('Password updated')).catch(function (err) {
         return console.log(err);

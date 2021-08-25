@@ -12,7 +12,7 @@ export default function Settings() {
     if(password !== confirmPassword) {
       alert('Passwords do not match')
     } else {
-      axios.post(`/api/users/${user._id}`, {password})
+      axios.post(`/api/users/change-password/${user._id}`, {password})
       .then(alert('Password updated'))
       .catch(err => console.log(err))
       .then(window.location.href = '/')

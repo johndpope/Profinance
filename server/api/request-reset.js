@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
+const crypto = require("crypto");
+const bcrypt = require("bcrypt");
 const { google } = require('googleapis');
-const { User } = require('../db/models')
+const { User, Token } = require('../db/models')
 module.exports = router;
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
@@ -28,16 +30,19 @@ router.post('/', async (req, res, next) => {
       accessToken: accessToken,
     },
   });
-  transport.verify(function(error, success) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Server is ready to take our messages');
-    }
-  });
   try {
     const { email } = req.body
     await User.findOne({email: email}, async (err, user) => {
+      let token = await Token.findOne({ userId: user._id });
+      if (token) await token.deleteOne();
+      let resetToken = crypto.randomBytes(32).toString("hex");
+      const hash = await bcrypt.hash(resetToken, Number(10));
+      await new Token({
+        userId: user._id,
+        token: hash,
+        createdAt: Date.now(),
+      }).save();
+      const link = `https://iangelfand-profinance.herokuapp.com/api/users/reset-password/${user._id}/${resetToken}`;
       if(err) console.log(err)
       if(!user) {
         console.log('no user') 
@@ -54,7 +59,7 @@ router.post('/', async (req, res, next) => {
             to: `${email}`,
             subject: 'Password Reset',
             text: 'Password Reset',
-            html: '<h1>Password Reset</h1>',
+            html: `<a href="${link}">Reset Password</a>`,
           };
       
           const result = await transport.sendMail(mailOptions);
