@@ -43,6 +43,7 @@ router.post('/', async (req, res, next) => {
         createdAt: Date.now(),
       }).save();
       const link = `https://iangelfand-profinance.herokuapp.com/api/users/reset-password/${user._id}/${resetToken}`;
+      // const link = `http://localhost:3000/reset-password/${user._id}/${resetToken}`;
       if(err) console.log(err)
       if(!user) {
         console.log('no user') 

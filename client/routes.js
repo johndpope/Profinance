@@ -1,8 +1,9 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import { PlaidLogin, UserHome, SignUp, Login, PasswordResetForm, Settings } from './components'
+import { PlaidLogin, UserHome, SignUp, Login, PasswordResetRequest, Settings, PasswordReset } from './components'
 
 export default function Routes({ user }) {
+
   return (
     <Switch>
       {user._id && user.accessToken && (
@@ -24,7 +25,8 @@ export default function Routes({ user }) {
         )}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/sign-up" component={SignUp} />
-        <Route exact path="/reset" component={PasswordResetForm} />
+        <Route exact path="/reset" component={PasswordResetRequest} />
+        <Route exact path="/reset-password/:id/:token" component={PasswordReset} />
         {/* <Redirect from="/*" to="/" /> */}
     </Switch>
   )

@@ -6,41 +6,17 @@ module.exports = router;
 const encryptPassword = (password) => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
-//change user password from settings page
+//change user password from settings page/email reset
 router.post('/change-password/:id', async (req, res, next) => {
   try {
+    let passwordResetToken = await Token.findOne({ userId: req.params.id });
     await User.findById(req.params.id, (err, user) => {
       user.password = encryptPassword(req.body.password)
       user.save()
     })
+    await passwordResetToken.deleteOne();
     res.json();
   } catch (error) {
     next(error)
   }
 })
-
-router.get('/reset-password/:id/:token', async (req, res, next) => {
-  try {
-    let passwordResetToken = await Token.findOne({ userId: req.params.id });
-    if (!passwordResetToken) {
-      throw new Error("Invalid or expired password reset token");
-    }
-    const isValid = await bcrypt.compare(req.params.token, passwordResetToken.token);
-
-    if (!isValid) {
-      throw new Error("Invalid or expired password reset token");
-    }
-    await passwordResetToken.deleteOne();
-    res.json()
-  } catch (error) {
-    next(error);
-  }
-})
-
-// router.post('/reset-password/:id/:token', async (req, res, next) => {
-//   try {
-//     console.log(req)
-//   } catch (error) {
-//     next(error);
-//   }
-// })
