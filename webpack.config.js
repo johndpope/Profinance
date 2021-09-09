@@ -30,12 +30,21 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i, 
+        test: /\.(jpeg|png|jpg)$/,
+        exclude: /node_modules/,
         loader: 'file-loader',
         options: {
-          name: '/public/[name].[ext]'
+          limit: 10000,
+          name: './public/assets/[name].[ext]',
+          publicPath: './public/images/'
         }
-    }
+      },
+      {
+        test:/\.html$/,
+        use: [
+          'html-loader'
+        ]
+      }
     ]
   }
 }

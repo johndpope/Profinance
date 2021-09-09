@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function PasswordReset() {
   return (
-    <div>
-      <a href="/reset">Password Reset</a>
+    <div className="password-reset">
+      <a href = '/reset'>Forgot your password?</a>
     </div>
   )
 }

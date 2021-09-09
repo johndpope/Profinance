@@ -10981,14 +10981,14 @@ __webpack_require__.r(__webpack_exports__);
 
 function ConfirmPassword(_ref) {
   var setConfirmPassword = _ref.setConfirmPassword;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    placeholder: "Password",
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    placeholder: "Confirm Password",
     name: "password",
     type: "password",
     onChange: function onChange(e) {
       return setConfirmPassword(e.target.value);
     }
-  }));
+  });
 }
 
 /***/ }),
@@ -11008,14 +11008,14 @@ __webpack_require__.r(__webpack_exports__);
 
 function Email(_ref) {
   var setEmail = _ref.setEmail;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     placeholder: "Email",
     name: "email",
-    type: "text",
+    type: "email",
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
-  }));
+  });
 }
 
 /***/ }),
@@ -11035,10 +11035,10 @@ __webpack_require__.r(__webpack_exports__);
 
 function LoginButton(_ref) {
   var handleSubmit = _ref.handleSubmit;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "login-button",
     onClick: handleSubmit
-  }, "Login");
+  }, "Log In");
 }
 
 /***/ }),
@@ -11057,9 +11057,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 function PasswordReset() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "password-reset"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     href: "/reset"
-  }, "Password Reset"));
+  }, "Forgot your password?"));
 }
 
 /***/ }),
@@ -11079,14 +11081,14 @@ __webpack_require__.r(__webpack_exports__);
 
 function Password(_ref) {
   var setPassword = _ref.setPassword;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     placeholder: "Password",
     name: "password",
     type: "password",
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  }));
+  });
 }
 
 /***/ }),
@@ -11106,8 +11108,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function SignupButton(_ref) {
   var handleSubmit = _ref.handleSubmit;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "login-button",
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "signup-button",
     onClick: handleSubmit
   }, "Sign up");
 }
@@ -11134,7 +11136,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_form_components_password__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth-form-components/password */ "./client/components/auth-form/auth-form-components/password.js");
 /* harmony import */ var _auth_form_components_login_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth-form-components/login-button */ "./client/components/auth-form/auth-form-components/login-button.js");
 /* harmony import */ var _auth_form_components_password_reset__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth-form-components/password-reset */ "./client/components/auth-form/auth-form-components/password-reset.js");
-/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../history */ "./client/history.js");
+/* harmony import */ var _public_assets_logo_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../public/assets/logo.png */ "./public/assets/logo.png");
+/* harmony import */ var _public_assets_logo_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_public_assets_logo_png__WEBPACK_IMPORTED_MODULE_8__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11187,20 +11190,30 @@ function Login() {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "login-container",
+    className: "auth-form",
     onKeyDown: handleKeyDown
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome to Profinance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_email__WEBPACK_IMPORTED_MODULE_4__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "../../../public/assets/logo.png",
+    alt: "logo",
+    width: "100%"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome to Profinance"), user.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "error"
+  }, user.error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_email__WEBPACK_IMPORTED_MODULE_4__.default, {
     setEmail: setEmail
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_password__WEBPACK_IMPORTED_MODULE_5__.default, {
     setPassword: setPassword
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_password_reset__WEBPACK_IMPORTED_MODULE_7__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_login_button__WEBPACK_IMPORTED_MODULE_6__.default, {
-    handleSubmit: handleSubmit
-  }), user.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, user.error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    href: "/auth/google"
-  }, "Sign in with google"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Don't have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    onClick: function onClick() {
-      return _history__WEBPACK_IMPORTED_MODULE_8__.default.push('/sign-up');
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_password_reset__WEBPACK_IMPORTED_MODULE_7__.default, {
+    style: {
+      textAlign: "left"
     }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_login_button__WEBPACK_IMPORTED_MODULE_6__.default, {
+    handleSubmit: handleSubmit
+  }), "or", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: function onClick() {
+      return window.location.href = '/auth/google';
+    }
+  }, "Sign in with Google"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Don't have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "/sign-up"
   }, "Register")));
 }
 
@@ -11227,6 +11240,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_form_components_password__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth-form-components/password */ "./client/components/auth-form/auth-form-components/password.js");
 /* harmony import */ var _auth_form_components_signup_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth-form-components/signup-button */ "./client/components/auth-form/auth-form-components/signup-button.js");
 /* harmony import */ var _auth_form_components_confirm_password__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth-form-components/confirm-password */ "./client/components/auth-form/auth-form-components/confirm-password.js");
+/* harmony import */ var _public_assets_logo_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../public/assets/logo.png */ "./public/assets/logo.png");
+/* harmony import */ var _public_assets_logo_png__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_public_assets_logo_png__WEBPACK_IMPORTED_MODULE_9__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11238,6 +11253,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -11289,9 +11305,14 @@ function SignUp() {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "login-container",
+    className: "auth-form",
     onKeyDown: handleKeyDown
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome to Profinance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_email__WEBPACK_IMPORTED_MODULE_5__.default, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: (_public_assets_logo_png__WEBPACK_IMPORTED_MODULE_9___default()),
+    alt: "logo"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome to Profinance"), user.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "error"
+  }, user.error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_email__WEBPACK_IMPORTED_MODULE_5__.default, {
     setEmail: setEmail
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_password__WEBPACK_IMPORTED_MODULE_6__.default, {
     setPassword: setPassword
@@ -11299,12 +11320,12 @@ function SignUp() {
     setConfirmPassword: setConfirmPassword
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_auth_form_components_signup_button__WEBPACK_IMPORTED_MODULE_7__.default, {
     handleSubmit: handleSubmit
-  }), user.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, user.error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    href: "/auth/google"
-  }, "Sign in with google"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }), "or", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: function onClick() {
-      return _history__WEBPACK_IMPORTED_MODULE_4__.default.push('/login');
+      return window.location.href = '/auth/google';
     }
+  }, "Sign up with google"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "/login"
   }, "Login")));
 }
 
@@ -11582,9 +11603,8 @@ function PasswordReset() {
 
             case 6:
               _context.next = 8;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/users/change-password/".concat(id), {
-                password: password,
-                token: token
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/api/users/reset-password/".concat(id, "/").concat(token), {
+                password: password
               }).then(window.location.href = '/');
 
             case 8:
@@ -11682,6 +11702,8 @@ var PlaidLogin = function PlaidLogin() {
                 _context.next = 2;
                 return fetch("/api/plaid/create_link_token", {
                   method: "POST"
+                }).catch(function (err) {
+                  return console.error(err);
                 });
 
               case 2:
@@ -11706,7 +11728,8 @@ var PlaidLogin = function PlaidLogin() {
 
     createLinkToken();
   }, []);
-  var onSuccess = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)( /*#__PURE__*/function () {
+
+  var onSuccess = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(public_token, metadata) {
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
@@ -11716,7 +11739,9 @@ var PlaidLogin = function PlaidLogin() {
               return axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/plaid/exchange_public_token', {
                 public_token: public_token,
                 user: user
-              }).then(window.location.href = '/home');
+              }).then(window.location.href = '/home').catch(function (err) {
+                return console.log(err);
+              });
 
             case 2:
             case "end":
@@ -11726,10 +11751,11 @@ var PlaidLogin = function PlaidLogin() {
       }, _callee2);
     }));
 
-    return function (_x, _x2) {
+    return function onSuccess(_x, _x2) {
       return _ref.apply(this, arguments);
     };
-  }(), [user]);
+  }();
+
   return token === null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "loader"
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_plaid_link__WEBPACK_IMPORTED_MODULE_2__.PlaidLink, {
@@ -12040,12 +12066,12 @@ var reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   user: _user__WEBPACK_IMPORTED_MODULE_3__.default,
   plaid: _plaid__WEBPACK_IMPORTED_MODULE_4__.default
 }); //show redux store
-// const middleware = composeWithDevTools(
-//   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
-// )
-//dont show redux store
 
-var middleware = (0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default);
+var middleware = (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
+  collapsed: true
+}))); //dont show redux store
+// const middleware = applyMiddleware(thunkMiddleware)
+
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(reducer, middleware);
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
@@ -12781,7 +12807,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  margin: 0;\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\r\n    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\r\n    sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n}\r\n  \r\nhtml, body {\r\n  height: 100%;\r\n}", "",{"version":3,"sources":["webpack://./client/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT;;cAEY;EACZ,mCAAmC;EACnC,kCAAkC;AACpC;;AAEA;EACE,YAAY;AACd","sourcesContent":["body {\r\n  margin: 0;\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\r\n    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\r\n    sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n}\r\n  \r\nhtml, body {\r\n  height: 100%;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  margin: 0;\r\n  font-family: Ubuntu, \"times new roman\", times, roman, serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n}\r\n  \r\nhtml, body {\r\n  height: 100%;\r\n}", "",{"version":3,"sources":["webpack://./client/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,2DAA2D;EAC3D,mCAAmC;EACnC,kCAAkC;AACpC;;AAEA;EACE,YAAY;AACd","sourcesContent":["body {\r\n  margin: 0;\r\n  font-family: Ubuntu, \"times new roman\", times, roman, serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n}\r\n  \r\nhtml, body {\r\n  height: 100%;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -12805,7 +12831,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login-container {\r\n  position: absolute;\r\n  top: 50%; \r\n  right: 50%;\r\n  transform: translate(50%,-50%);\r\n  background-color: #495057;\r\n  border-radius: 20px;\r\n  padding: 20px;\r\n  height: 35%;\r\n  width: 30%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-direction: column;\r\n  text-align: center;\r\n}\r\n\r\ninput[type=\"text\"] {\r\n  margin: 10px;\r\n  padding: 5px;\r\n  font-size: 20px;\r\n  border-width: 5px;\r\n  outline: none;\r\n  border-color: #CCCCCC;\r\n  background-color: #FFFFFF;\r\n  color: #000000;\r\n  border-style: solid;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n  text-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n}\r\n\r\ninput[type=\"password\"] {\r\n  margin: 10px;\r\n  padding: 5px;\r\n  font-size: 20px;\r\n  border-width: 5px;\r\n  outline: none;\r\n  border-color: #CCCCCC;\r\n  background-color: #FFFFFF;\r\n  color: #000000;\r\n  border-style: solid;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n  text-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n}\r\n\r\n.login-button {\r\n  background-color:#44c767;\r\n  border-radius:30px;\r\n  border:2px solid #18ab29;\r\n  display:inline-block;\r\n  cursor:pointer;\r\n  color:#ffffff;\r\n  font-family:Arial;\r\n  font-size:20px;\r\n  padding:17px 38px;\r\n  text-decoration:none;\r\n  text-shadow:0px 1px 0px #2f6627;\r\n}\r\n\r\n.settings {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.settings > input {\r\n  border: 1px solid green;\r\n}", "",{"version":3,"sources":["webpack://./public/styles/auth-form.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,QAAQ;EACR,UAAU;EACV,8BAA8B;EAC9B,yBAAyB;EACzB,mBAAmB;EACnB,aAAa;EACb,WAAW;EACX,UAAU;EACV,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;EACtB,kBAAkB;AACpB;;AAEA;EACE,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,aAAa;EACb,qBAAqB;EACrB,yBAAyB;EACzB,cAAc;EACd,mBAAmB;EACnB,mBAAmB;EACnB,0CAA0C;EAC1C,2CAA2C;AAC7C;;AAEA;EACE,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,aAAa;EACb,qBAAqB;EACrB,yBAAyB;EACzB,cAAc;EACd,mBAAmB;EACnB,mBAAmB;EACnB,0CAA0C;EAC1C,2CAA2C;AAC7C;;AAEA;EACE,wBAAwB;EACxB,kBAAkB;EAClB,wBAAwB;EACxB,oBAAoB;EACpB,cAAc;EACd,aAAa;EACb,iBAAiB;EACjB,cAAc;EACd,iBAAiB;EACjB,oBAAoB;EACpB,+BAA+B;AACjC;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,sBAAsB;EACtB,mBAAmB;AACrB;;AAEA;EACE,uBAAuB;AACzB","sourcesContent":[".login-container {\r\n  position: absolute;\r\n  top: 50%; \r\n  right: 50%;\r\n  transform: translate(50%,-50%);\r\n  background-color: #495057;\r\n  border-radius: 20px;\r\n  padding: 20px;\r\n  height: 35%;\r\n  width: 30%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-direction: column;\r\n  text-align: center;\r\n}\r\n\r\ninput[type=\"text\"] {\r\n  margin: 10px;\r\n  padding: 5px;\r\n  font-size: 20px;\r\n  border-width: 5px;\r\n  outline: none;\r\n  border-color: #CCCCCC;\r\n  background-color: #FFFFFF;\r\n  color: #000000;\r\n  border-style: solid;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n  text-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n}\r\n\r\ninput[type=\"password\"] {\r\n  margin: 10px;\r\n  padding: 5px;\r\n  font-size: 20px;\r\n  border-width: 5px;\r\n  outline: none;\r\n  border-color: #CCCCCC;\r\n  background-color: #FFFFFF;\r\n  color: #000000;\r\n  border-style: solid;\r\n  border-radius: 10px;\r\n  box-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n  text-shadow: 0px 0px 5px rgba(66,66,66,.75);\r\n}\r\n\r\n.login-button {\r\n  background-color:#44c767;\r\n  border-radius:30px;\r\n  border:2px solid #18ab29;\r\n  display:inline-block;\r\n  cursor:pointer;\r\n  color:#ffffff;\r\n  font-family:Arial;\r\n  font-size:20px;\r\n  padding:17px 38px;\r\n  text-decoration:none;\r\n  text-shadow:0px 1px 0px #2f6627;\r\n}\r\n\r\n.settings {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.settings > input {\r\n  border: 1px solid green;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n  /* background-image: url(\"../assets/money-background.jpg\");*/\r\n  background-color: #719ECE;\r\n}\r\n\r\n.auth-form {\r\n  margin: auto;\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  padding: 1rem;\r\n  border-radius: 0.5rem;\r\n  text-align: center;\r\n  color: white;\r\n  background-color: rgba(0, 0, 0, 0.65);\r\n}\r\n\r\n/*  */\r\n\r\n.auth-form button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.auth-form a {\r\n  color: white;\r\n}\r\n\r\n.auth-form a:hover {\r\n  color: rgba(255, 255, 255, 0.45);\r\n}\r\n\r\n.auth-form button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n\r\n.auth-form input[type=\"email\"], .auth-form input[type=\"password\"] {\r\n  margin: auto;\r\n  width: 60%;\r\n  padding: 0.5rem;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\ninput::placeholder {\r\n  color: black;\r\n  font-weight: bold;\r\n  font-family: Ubuntu;\r\n}\r\n\r\n.auth-form input[type=\"email\"]:focus-visible, .auth-form input[type=\"password\"]:focus-visible {\r\n  outline: none;\r\n  box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4);\r\n}\r\n\r\n.password-reset {\r\n  width: 65%;\r\n  text-align: start;\r\n}\r\n\r\n.error {\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n\r\n@media screen and (max-width: 600px) {\r\n  .auth-form {\r\n    margin: auto;\r\n    width: 90%;\r\n    padding: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    border-radius: 0.5rem;\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n.settings {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.settings > input {\r\n  border: 1px solid green;\r\n}", "",{"version":3,"sources":["webpack://./public/styles/auth-form.css"],"names":[],"mappings":"AAAA;EACE,4DAA4D;EAC5D,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,QAAQ;EACR,SAAS;EACT,gCAAgC;EAChC,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,aAAa;EACb,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;EACZ,qCAAqC;AACvC;;AAEA,KAAK;;AAEL;EACE,YAAY;EACZ,qBAAqB;EACrB,uBAAuB;EACvB,qBAAqB;EACrB,eAAe;EACf,cAAc;EACd,UAAU;AACZ;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,gCAAgC;AAClC;;AAEA;EACE,yBAAyB;EACzB,YAAY;AACd;;;AAGA;EACE,YAAY;EACZ,UAAU;EACV,eAAe;EACf,uBAAuB;EACvB,qBAAqB;EACrB,qBAAqB;AACvB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,6CAA6C;AAC/C;;AAEA;EACE,UAAU;EACV,iBAAiB;AACnB;;AAEA;EACE,qBAAqB;AACvB;;;AAGA;EACE;IACE,YAAY;IACZ,UAAU;IACV,UAAU;IACV,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,uBAAuB;IACvB,qBAAqB;IACrB,kBAAkB;EACpB;AACF;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,sBAAsB;EACtB,mBAAmB;AACrB;;AAEA;EACE,uBAAuB;AACzB","sourcesContent":["body {\r\n  /* background-image: url(\"../assets/money-background.jpg\");*/\r\n  background-color: #719ECE;\r\n}\r\n\r\n.auth-form {\r\n  margin: auto;\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  padding: 1rem;\r\n  border-radius: 0.5rem;\r\n  text-align: center;\r\n  color: white;\r\n  background-color: rgba(0, 0, 0, 0.65);\r\n}\r\n\r\n/*  */\r\n\r\n.auth-form button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.auth-form a {\r\n  color: white;\r\n}\r\n\r\n.auth-form a:hover {\r\n  color: rgba(255, 255, 255, 0.45);\r\n}\r\n\r\n.auth-form button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n\r\n.auth-form input[type=\"email\"], .auth-form input[type=\"password\"] {\r\n  margin: auto;\r\n  width: 60%;\r\n  padding: 0.5rem;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\ninput::placeholder {\r\n  color: black;\r\n  font-weight: bold;\r\n  font-family: Ubuntu;\r\n}\r\n\r\n.auth-form input[type=\"email\"]:focus-visible, .auth-form input[type=\"password\"]:focus-visible {\r\n  outline: none;\r\n  box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4);\r\n}\r\n\r\n.password-reset {\r\n  width: 65%;\r\n  text-align: start;\r\n}\r\n\r\n.error {\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n\r\n@media screen and (max-width: 600px) {\r\n  .auth-form {\r\n    margin: auto;\r\n    width: 90%;\r\n    padding: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    border-radius: 0.5rem;\r\n    text-align: center;\r\n  }\r\n}\r\n\r\n.settings {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.settings > input {\r\n  border: 1px solid green;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -15767,6 +15793,16 @@ module.exports = {
   decodePayload
 };
 
+
+/***/ }),
+
+/***/ "./public/assets/logo.png":
+/*!********************************!*\
+  !*** ./public/assets/logo.png ***!
+  \********************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/logo.png";
 
 /***/ }),
 
@@ -55602,6 +55638,26 @@ const Socket = _build_index_js__WEBPACK_IMPORTED_MODULE_0__.Socket;
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	!function() {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	}();
 /******/ 	
 /************************************************************************/

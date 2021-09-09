@@ -1,62 +1,92 @@
-.login-container {
-  position: absolute;
-  top: 50%; 
-  right: 50%;
-  transform: translate(50%,-50%);
-  background-color: #495057;
-  border-radius: 20px;
-  padding: 20px;
-  height: 35%;
-  width: 30%;
+body {
+  /* background-image: url("../assets/money-background.jpg");*/
+  background-color: #719ECE;
+}
+
+.auth-form {
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
   text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
-input[type="text"] {
-  margin: 10px;
-  padding: 5px;
-  font-size: 20px;
-  border-width: 5px;
+/*  */
+
+.auth-form button {
+  color: black;
+  text-decoration: none;
+  border: solid 1px black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  width: 65%;
+}
+
+.auth-form a {
+  color: white;
+}
+
+.auth-form a:hover {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.auth-form button:hover {
+  background-color: #6C757D;
+  color: white;
+}
+
+
+.auth-form input[type="email"], .auth-form input[type="password"] {
+  margin: auto;
+  width: 60%;
+  padding: 0.5rem;
+  border: solid 2px black;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+input::placeholder {
+  color: black;
+  font-weight: bold;
+  font-family: Ubuntu;
+}
+
+.auth-form input[type="email"]:focus-visible, .auth-form input[type="password"]:focus-visible {
   outline: none;
-  border-color: #CCCCCC;
-  background-color: #FFFFFF;
-  color: #000000;
-  border-style: solid;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(66,66,66,.75);
-  text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+  box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4);
 }
 
-input[type="password"] {
-  margin: 10px;
-  padding: 5px;
-  font-size: 20px;
-  border-width: 5px;
-  outline: none;
-  border-color: #CCCCCC;
-  background-color: #FFFFFF;
-  color: #000000;
-  border-style: solid;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(66,66,66,.75);
-  text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+.password-reset {
+  width: 65%;
+  text-align: start;
 }
 
-.login-button {
-  background-color:#44c767;
-  border-radius:30px;
-  border:2px solid #18ab29;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-size:20px;
-  padding:17px 38px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #2f6627;
+.error {
+  margin-bottom: 0.5rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  .auth-form {
+    margin: auto;
+    width: 90%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
 }
 
 .settings {

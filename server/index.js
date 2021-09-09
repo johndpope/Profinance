@@ -10,18 +10,16 @@ const session = require('cookie-session');
 const socketio = require('socket.io')
 const PORT = process.env.PORT || 3000
 const db = require('./db')
-const { User } = require('./db/models')
+// const { User } = require('./db/models')
 module.exports = app
 
-passport.serializeUser((user, done) => {done(null, user._id)})
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findById(id)
-    done(null, user)
-  } catch (err) {
-    done(err)
-  }
-})
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 db()
 app.use(morgan('dev'))

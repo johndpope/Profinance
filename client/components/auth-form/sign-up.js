@@ -7,6 +7,7 @@ import Email from './auth-form-components/email'
 import Password from './auth-form-components/password'
 import SignupButton from './auth-form-components/signup-button'
 import ConfirmPassword from './auth-form-components/confirm-password'
+import logo from '../../../public/assets/logo.png'
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -34,17 +35,19 @@ export default function SignUp() {
     }
   }
   return (
-    <div className='login-container' onKeyDown={handleKeyDown}>
+    <div className='auth-form' onKeyDown={handleKeyDown}>
+      <img src={logo} alt='logo' />
       <h1>Welcome to Profinance</h1>
+      {user.error && <strong className='error'>{user.error}</strong>}
       <Email setEmail={setEmail} />
       <Password setPassword={setPassword} />
       <ConfirmPassword setConfirmPassword={setConfirmPassword} />
       <SignupButton handleSubmit={handleSubmit} />
-      {user.error && <strong>{user.error}</strong>}
-      <a href="/auth/google">
-        Sign in with google
-      </a>
-      <p>Have an account?<span /> <button onClick={() => history.push('/login')}>Login</button></p>
+      or
+      <button onClick={() => window.location.href = '/auth/google'}>
+        Sign up with google
+      </button>
+      <p>Have an account?<span /> <a href='/login'>Login</a></p>
     </div>
     
   )

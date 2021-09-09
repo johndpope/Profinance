@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import { PlaidLink } from "react-plaid-link";
 import axios from 'axios';
@@ -10,17 +10,18 @@ const PlaidLogin = () => {
     async function createLinkToken() {
       let response = await fetch("/api/plaid/create_link_token", {
         method: "POST",
-      });
+      }).catch(err => console.error(err));
       const { link_token } = await response.json();
       setToken(link_token);
     }
     createLinkToken();
   }, []);
 
-  const onSuccess = useCallback(async (public_token, metadata) => {
+  const onSuccess = async (public_token, metadata) => {
     await axios.post('/api/plaid/exchange_public_token', {public_token, user})
     .then(window.location.href = '/home')
-  },[user]);
+    .catch(err => console.log(err));
+  }
 
   return token === null ? (
     <div className="loader"></div>

@@ -13,7 +13,7 @@ export default function PasswordReset() {
     if(password !== confirmPassword) {
       alert('Passwords do not match')
     } else {
-      await axios.post(`/api/users/change-password/${id}`, {password, token})
+      await axios.post(`/api/users/reset-password/${id}/${token}`, {password})
       .then(window.location.href = '/')
     }
   }
