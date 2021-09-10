@@ -1,0 +1,35 @@
+.plaid-container {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+  color: black;
+  border: solid 2px black;
+  border-radius: 0.5rem;
+}
+
+.plaid-login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+  color: black;
+  border: solid 2px black;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.plaid-login:hover {
+  background-color: #6C757D;
+  color: blue;
+}
+
+@media screen and (max-width: 768px) {
+  .plaid-container {
+    width: 95%;
+  }
+}

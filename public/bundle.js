@@ -11922,6 +11922,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_plaid_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_plaid_link__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _public_styles_plaid_login_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../public/styles/plaid-login.css */ "./public/styles/plaid-login.css");
+/* harmony import */ var _public_styles_plaid_login_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_public_styles_plaid_login_css__WEBPACK_IMPORTED_MODULE_4__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -11937,6 +11939,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -12025,10 +12028,13 @@ var PlaidLogin = function PlaidLogin() {
 
   return token === null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "loader"
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_plaid_link__WEBPACK_IMPORTED_MODULE_2__.PlaidLink, {
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "plaid-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_plaid_link__WEBPACK_IMPORTED_MODULE_2__.PlaidLink, {
+    className: "plaid-login",
     token: token,
     onSuccess: onSuccess
-  }, "Connect a bank account");
+  }, "Connect a bank account"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PlaidLogin);
@@ -13126,6 +13132,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".navbar-container {\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container {\r\n  display: flex;\r\n  width: 35%;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.button-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .button-container {\r\n    width: 60%;\r\n  }\r\n}", "",{"version":3,"sources":["webpack://./public/styles/navbar.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,aAAa;EACb,UAAU;EACV,8BAA8B;AAChC;;AAEA;EACE,YAAY;EACZ,qBAAqB;EACrB,uBAAuB;EACvB,qBAAqB;EACrB,eAAe;EACf,cAAc;EACd,UAAU;AACZ;;AAEA;EACE,yBAAyB;EACzB,YAAY;AACd;;AAEA;EACE;IACE,UAAU;EACZ;AACF","sourcesContent":[".navbar-container {\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container {\r\n  display: flex;\r\n  width: 35%;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.button-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .button-container {\r\n    width: 60%;\r\n  }\r\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./public/styles/plaid-login.css":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./public/styles/plaid-login.css ***!
+  \*****************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".plaid-container {\r\n  height: 100%;\r\n  width: 25%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  margin: auto;\r\n  color: black;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n}\r\n\r\n.plaid-login {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  margin: auto;\r\n  color: black;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  width: 100%;\r\n}\r\n\r\n.plaid-login:hover {\r\n  background-color: #6C757D;\r\n  color: blue;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .plaid-container {\r\n    width: 95%;\r\n  }\r\n}", "",{"version":3,"sources":["webpack://./public/styles/plaid-login.css"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,UAAU;EACV,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,YAAY;EACZ,YAAY;EACZ,uBAAuB;EACvB,qBAAqB;AACvB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,aAAa;EACb,uBAAuB;EACvB,qBAAqB;EACrB,YAAY;EACZ,YAAY;EACZ,uBAAuB;EACvB,qBAAqB;EACrB,WAAW;AACb;;AAEA;EACE,yBAAyB;EACzB,WAAW;AACb;;AAEA;EACE;IACE,UAAU;EACZ;AACF","sourcesContent":[".plaid-container {\r\n  height: 100%;\r\n  width: 25%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  margin: auto;\r\n  color: black;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n}\r\n\r\n.plaid-login {\r\n  height: 100%;\r\n  width: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-content: center;\r\n  margin: auto;\r\n  color: black;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  width: 100%;\r\n}\r\n\r\n.plaid-login:hover {\r\n  background-color: #6C757D;\r\n  color: blue;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .plaid-container {\r\n    width: 95%;\r\n  }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -54117,6 +54147,34 @@ module.exports = content.locals || {};
 
 var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./navbar.css */ "./node_modules/css-loader/dist/cjs.js!./public/styles/navbar.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./public/styles/plaid-login.css":
+/*!***************************************!*\
+  !*** ./public/styles/plaid-login.css ***!
+  \***************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./plaid-login.css */ "./node_modules/css-loader/dist/cjs.js!./public/styles/plaid-login.css");
 
             content = content.__esModule ? content.default : content;
 

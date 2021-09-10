@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import { PlaidLink } from "react-plaid-link";
 import axios from 'axios';
+import '../../public/styles/plaid-login.css'
 
 const PlaidLogin = () => {
   const user = useSelector(state => state.user)
@@ -26,12 +27,15 @@ const PlaidLogin = () => {
   return token === null ? (
     <div className="loader"></div>
   ) : (
-    <PlaidLink
-      token={token}
-      onSuccess={onSuccess}
-    >
-      Connect a bank account
-    </PlaidLink>
+    <div className="plaid-container">
+      <PlaidLink
+        className="plaid-login"
+        token={token}
+        onSuccess={onSuccess}
+      >
+        Connect a bank account
+      </PlaidLink>
+    </div>
   );
 };
 
