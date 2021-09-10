@@ -29,10 +29,10 @@ router.post('/reset-password/:id/:token', async (req, res, next) => {
     if (!isValid) {
       throw new Error("Invalid or expired password reset token");
     }
-    const user = await User.findById(req.params.id, (err, user) => {
+    await User.findById(req.params.id, (err, user) => {
       user.password = req.body.password
+      user.save()
     })    
-    user.save()
     passwordResetToken.deleteOne();
     res.json()
   } catch (error) {

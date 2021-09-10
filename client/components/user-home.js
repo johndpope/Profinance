@@ -71,12 +71,13 @@ export default function UserHome() {
                   <tr>
                     <td>{item.date}</td>
                     <td>{item.name}</td>
-                    <td style={{color:checkAmount(item.amount)}}>{item.amount.toFixed(2)}</td>
+                    <td style={{color:checkAmount(item.amount)}}>${item.amount.toFixed(2)}</td>
                   </tr>
                 </tbody>
               ))) : (
                 <thead>
                 <tr>
+                <th>Loading...</th> 
                 <th>Loading...</th> 
                 <th>Loading...</th> 
                 </tr>

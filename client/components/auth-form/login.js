@@ -30,7 +30,7 @@ export default function Login() {
   }
   return (
     <div className='auth-form' onKeyDown={handleKeyDown}>
-      <img src={"../../../public/assets/logo.png"} alt='logo' width='100%' />
+      <img src={logo} alt='logo' width='100%' />
       <h1>Welcome to Profinance</h1>
       {user.error && <strong className='error'>{user.error}</strong>}
       <Email setEmail={setEmail} />

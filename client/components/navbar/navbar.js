@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import { logout } from '../../store'
 import Logout from './logout'
 import Settings from './settings'
+import Home from './home'
+import logo from '../../../public/assets/logo.png'
 
 export default function Navbar({ user }) {
   const dispatch = useDispatch()
@@ -11,7 +13,8 @@ export default function Navbar({ user }) {
       {user._id && user.googleId && (
         <nav>
           <div>
-            <h1><a href="/">Profinance</a></h1>
+            <img src={logo} alt="logo" />
+            <Home />
             <Logout dispatch={dispatch} logout={logout} />
             <hr />
           </div>
@@ -21,6 +24,7 @@ export default function Navbar({ user }) {
         <nav>
           <div>
             <h1><a href="/">Profinance</a></h1>
+            <Home />
             <Settings />
             <Logout dispatch={dispatch} logout={logout} />
             <hr />

@@ -62,7 +62,6 @@ router.post('/', async (req, res, next) => {
             text: 'Password Reset',
             html: `<a href="${link}">Reset Password</a>`,
           };
-      
           const result = await transport.sendMail(mailOptions);
           return result;
         } catch (error) {

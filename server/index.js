@@ -10,7 +10,6 @@ const session = require('cookie-session');
 const socketio = require('socket.io')
 const PORT = process.env.PORT || 3000
 const db = require('./db')
-// const { User } = require('./db/models')
 module.exports = app
 
 passport.serializeUser(function(user, done) {
