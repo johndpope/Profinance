@@ -6,12 +6,11 @@ import user from './user'
 import plaid from './plaid'
 
 const reducer = combineReducers({ user, plaid })
-//show redux store
-const middleware = composeWithDevTools(
+//shows redux store in development
+const middleware = process.env.NODE_ENV === 'development' ? composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
-)
-//dont show redux store
-// const middleware = applyMiddleware(thunkMiddleware)
+) : applyMiddleware(thunkMiddleware)
+
 
 const store = createStore(reducer, middleware)
 

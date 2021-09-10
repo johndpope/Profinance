@@ -12314,13 +12314,11 @@ __webpack_require__.r(__webpack_exports__);
 var reducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   user: _user__WEBPACK_IMPORTED_MODULE_3__["default"],
   plaid: _plaid__WEBPACK_IMPORTED_MODULE_4__["default"]
-}); //show redux store
+}); //shows redux store in development
 
-var middleware = (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
+var middleware =  true ? (0,redux_devtools_extension__WEBPACK_IMPORTED_MODULE_2__.composeWithDevTools)((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], (0,redux_logger__WEBPACK_IMPORTED_MODULE_0__.createLogger)({
   collapsed: true
-}))); //dont show redux store
-// const middleware = applyMiddleware(thunkMiddleware)
-
+}))) : 0;
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(reducer, middleware);
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
