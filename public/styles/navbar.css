@@ -25,3 +25,9 @@
   background-color: #6C757D;
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .button-container {
+    width: 60%;
+  }
+}
