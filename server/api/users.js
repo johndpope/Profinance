@@ -10,6 +10,7 @@ module.exports = router;
 router.post('/change-password/:id', async (req, res, next) => {
   try {
     await User.findById(req.params.id, (err, user) => {
+      if(!req.body.password) res.json({error: 'Password is required'})
       user.password = req.body.password
       user.save()
     })
