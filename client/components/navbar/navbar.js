@@ -11,25 +11,21 @@ export default function Navbar({ user }) {
   return (
     <nav>
       {user._id && user.googleId && (
-        <nav>
-          <div>
-            <img src={logo} alt="logo" />
-            <Home />
-            <Logout dispatch={dispatch} logout={logout} />
-            <hr />
-          </div>
-        </nav>
+        <div>
+          <img src={logo} alt="logo" />
+          <Home />
+          <Logout dispatch={dispatch} logout={logout} />
+          <hr />
+        </div>
       )}
       {user._id && !user.googleId && (
-        <nav>
-          <div>
-            <h1><a href="/">Profinance</a></h1>
+        <div>
+            <img src={logo} alt="logo" />
             <Home />
             <Settings />
             <Logout dispatch={dispatch} logout={logout} />
             <hr />
-          </div>
-        </nav>
+        </div>
       )}
     </nav>
   )
