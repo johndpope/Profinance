@@ -11685,6 +11685,8 @@ function Navbar(_ref) {
     className: "navbar-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: (_public_assets_logo_png__WEBPACK_IMPORTED_MODULE_6___default()),
+    width: "100%",
+    height: "100%",
     alt: "logo",
     onClick: function onClick() {
       return window.location.href = '/';
@@ -11736,6 +11738,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _public_styles_password_reset_request_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../public/styles/password-reset-request.css */ "./public/styles/password-reset-request.css");
+/* harmony import */ var _public_styles_password_reset_request_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_styles_password_reset_request_css__WEBPACK_IMPORTED_MODULE_2__);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -11754,11 +11758,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function PasswordResetRequest() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       email = _useState2[0],
       setEmail = _useState2[1];
+
+  var isEmailValid = function isEmailValid() {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   var handleSubmit = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
@@ -11766,14 +11776,19 @@ function PasswordResetRequest() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              if (!(email && isEmailValid(email))) {
+                _context.next = 3;
+                break;
+              }
+
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/request-reset', {
                 email: email
               }).catch(function (err) {
                 return console.log(err);
-              }).then(window.location.href = '/login');
+              }).then(alert('Password reset email sent!')).then(window.location.href = '/login');
 
-            case 2:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -11786,8 +11801,11 @@ function PasswordResetRequest() {
     };
   }();
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "text",
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "password-reset-request-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Forgot Password?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Enter email to reset your password."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    autocomplete: "on",
+    type: "email",
     placeholder: "Email",
     onChange: function onChange(e) {
       return setEmail(e.target.value);
@@ -12182,7 +12200,11 @@ function UserHome() {
     dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.fetchAccountTransactions)(e.target.value));
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Welcome: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Choose an account: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "user-home"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Welcome: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null), user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "account-select"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Choose an account: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     onChange: function onChange(e) {
       return handleAccountChange(e);
     }
@@ -12193,23 +12215,23 @@ function UserHome() {
       key: index,
       value: "".concat(account.account_id)
     }, account.name);
-  }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), transactions && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, accountTransactions.transactions ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, accountTransactions.accounts[0].official_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Merchant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Amount"))), accountTransactions.transactions.map(function (transaction, index) {
+  }) : null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), transactions && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, accountTransactions.transactions ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, accountTransactions.accounts[0].official_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "transaction-table-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Merchant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Amount"))), accountTransactions.transactions.map(function (transaction, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", {
       key: index
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.category[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
       style: {
         color: checkAmount(transaction.transaction)
       }
-    }, transaction.amount.toFixed(2))));
-  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "All Accounts:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Merchant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Amount"))), transactions.length ? transactions.map(function (item, index) {
+    }, "$", transaction.amount.toFixed(2))));
+  })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "All Accounts:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "transaction-table-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Merchant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Amount"))), transactions.length ? transactions.map(function (transaction, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", {
       key: index
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, item.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
-      style: {
-        color: checkAmount(item.amount)
-      }
-    }, "$", item.amount.toFixed(2))));
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Loading...")))))));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, transaction.category[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "$", transaction.amount.toFixed(2))));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Loading..."))))))));
 }
 
 /***/ }),
@@ -13131,7 +13153,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar-container {\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container {\r\n  display: flex;\r\n  width: 35%;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.button-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .button-container {\r\n    width: 60%;\r\n  }\r\n}", "",{"version":3,"sources":["webpack://./public/styles/navbar.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,aAAa;EACb,UAAU;EACV,8BAA8B;AAChC;;AAEA;EACE,YAAY;EACZ,qBAAqB;EACrB,uBAAuB;EACvB,qBAAqB;EACrB,eAAe;EACf,cAAc;EACd,UAAU;AACZ;;AAEA;EACE,yBAAyB;EACzB,YAAY;AACd;;AAEA;EACE;IACE,UAAU;EACZ;AACF","sourcesContent":[".navbar-container {\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container {\r\n  display: flex;\r\n  width: 35%;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.button-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .button-container {\r\n    width: 60%;\r\n  }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar-container {\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container {\r\n  display: flex;\r\n  width: 35%;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.button-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .button-container {\r\n    width: 65%;\r\n  }\r\n}", "",{"version":3,"sources":["webpack://./public/styles/navbar.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,aAAa;EACb,UAAU;EACV,8BAA8B;AAChC;;AAEA;EACE,YAAY;EACZ,qBAAqB;EACrB,uBAAuB;EACvB,qBAAqB;EACrB,eAAe;EACf,cAAc;EACd,UAAU;AACZ;;AAEA;EACE,yBAAyB;EACzB,YAAY;AACd;;AAEA;EACE;IACE,UAAU;EACZ;AACF","sourcesContent":[".navbar-container {\r\n  width: 100%;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container {\r\n  display: flex;\r\n  width: 35%;\r\n  justify-content: space-between;\r\n}\r\n\r\n.button-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 1px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 65%;\r\n}\r\n\r\n.button-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .button-container {\r\n    width: 65%;\r\n  }\r\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./public/styles/password-reset-request.css":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./public/styles/password-reset-request.css ***!
+  \****************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".password-reset-request-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n}\r\n\r\n.password-reset-request-container input[type=\"email\"] {\r\n  width: 16rem;\r\n  padding: 0.5rem;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n.password-reset-request-container input::placeholder {\r\n  color: black;\r\n  font-weight: bold;\r\n  font-family: Ubuntu;\r\n} \r\n\r\n.password-reset-request-container input[type=\"email\"]:focus-visible {\r\n  outline: none;\r\n  box-shadow: 0 0 0 4px rgb(21, 156, 228);\r\n}\r\n\r\n.password-reset-request-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 17.5rem;\r\n}\r\n\r\n.password-reset-request-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}", "",{"version":3,"sources":["webpack://./public/styles/password-reset-request.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;EACvB,aAAa;AACf;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,uBAAuB;EACvB,qBAAqB;EACrB,qBAAqB;AACvB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,uCAAuC;AACzC;;AAEA;EACE,YAAY;EACZ,qBAAqB;EACrB,uBAAuB;EACvB,qBAAqB;EACrB,eAAe;EACf,cAAc;EACd,cAAc;AAChB;;AAEA;EACE,yBAAyB;EACzB,YAAY;AACd","sourcesContent":[".password-reset-request-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n}\r\n\r\n.password-reset-request-container input[type=\"email\"] {\r\n  width: 16rem;\r\n  padding: 0.5rem;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n.password-reset-request-container input::placeholder {\r\n  color: black;\r\n  font-weight: bold;\r\n  font-family: Ubuntu;\r\n} \r\n\r\n.password-reset-request-container input[type=\"email\"]:focus-visible {\r\n  outline: none;\r\n  box-shadow: 0 0 0 4px rgb(21, 156, 228);\r\n}\r\n\r\n.password-reset-request-container button {\r\n  color: black;\r\n  text-decoration: none;\r\n  border: solid 2px black;\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem;\r\n  margin: 0.5rem;\r\n  width: 17.5rem;\r\n}\r\n\r\n.password-reset-request-container button:hover {\r\n  background-color: #6C757D;\r\n  color: white;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -13203,7 +13249,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "table, th, td {\r\n  border: 1px solid black;\r\n}\r\ntable {\r\n  width: 100%;\r\n}\r\n", "",{"version":3,"sources":["webpack://./public/styles/user-home.css"],"names":[],"mappings":"AAAA;EACE,uBAAuB;AACzB;AACA;EACE,WAAW;AACb","sourcesContent":["table, th, td {\r\n  border: 1px solid black;\r\n}\r\ntable {\r\n  width: 100%;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --border: 3px solid black;\r\n}\r\n\r\ntable {\r\n  width: 100%;\r\n  text-align: left;\r\n  border-collapse: collapse; \r\n  color: white;\r\n}\r\n\r\ntable, tbody {\r\n  border: var(--border);\r\n}\r\n\r\nthead, th {\r\n  border: var(--border);\r\n  padding: 0.5rem;\r\n} \r\n\r\ntd {\r\n  padding: 0.5rem;\r\n}\r\n\r\n.transaction-table-container {\r\n  display: flex;\r\n}\r\n\r\n.user-home {\r\n  margin: 1rem;\r\n  padding: 1rem;\r\n  background-color: rgba(0, 0, 0, 0.65);\r\n  border-radius: 0.5rem;\r\n  color: white;\r\n}\r\n\r\n.account-select {\r\n  margin-top: 1rem;\r\n}\r\n\r\nh2 {\r\n  margin: 0;\r\n}\r\n\r\nh3 {\r\n  margin-top: 0;\r\n  margin-bottom: 0.25rem;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .user-home {\r\n    width: 85%;\r\n    margin: auto;\r\n    margin-bottom: 1rem;\r\n  }  \r\n  thead, th, td {\r\n    padding: 0;\r\n  } \r\n}", "",{"version":3,"sources":["webpack://./public/styles/user-home.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;AAC3B;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,yBAAyB;EACzB,YAAY;AACd;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,qBAAqB;EACrB,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,qCAAqC;EACrC,qBAAqB;EACrB,YAAY;AACd;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,SAAS;AACX;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE;IACE,UAAU;IACV,YAAY;IACZ,mBAAmB;EACrB;EACA;IACE,UAAU;EACZ;AACF","sourcesContent":[":root {\r\n  --border: 3px solid black;\r\n}\r\n\r\ntable {\r\n  width: 100%;\r\n  text-align: left;\r\n  border-collapse: collapse; \r\n  color: white;\r\n}\r\n\r\ntable, tbody {\r\n  border: var(--border);\r\n}\r\n\r\nthead, th {\r\n  border: var(--border);\r\n  padding: 0.5rem;\r\n} \r\n\r\ntd {\r\n  padding: 0.5rem;\r\n}\r\n\r\n.transaction-table-container {\r\n  display: flex;\r\n}\r\n\r\n.user-home {\r\n  margin: 1rem;\r\n  padding: 1rem;\r\n  background-color: rgba(0, 0, 0, 0.65);\r\n  border-radius: 0.5rem;\r\n  color: white;\r\n}\r\n\r\n.account-select {\r\n  margin-top: 1rem;\r\n}\r\n\r\nh2 {\r\n  margin: 0;\r\n}\r\n\r\nh3 {\r\n  margin-top: 0;\r\n  margin-bottom: 0.25rem;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  .user-home {\r\n    width: 85%;\r\n    margin: auto;\r\n    margin-bottom: 1rem;\r\n  }  \r\n  thead, th, td {\r\n    padding: 0;\r\n  } \r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -54147,6 +54193,34 @@ module.exports = content.locals || {};
 
 var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./navbar.css */ "./node_modules/css-loader/dist/cjs.js!./public/styles/navbar.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./public/styles/password-reset-request.css":
+/*!**************************************************!*\
+  !*** ./public/styles/password-reset-request.css ***!
+  \**************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./password-reset-request.css */ "./node_modules/css-loader/dist/cjs.js!./public/styles/password-reset-request.css");
 
             content = content.__esModule ? content.default : content;
 

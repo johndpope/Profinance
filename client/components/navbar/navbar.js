@@ -22,7 +22,7 @@ export default function Navbar({ user }) {
       )}
       {user._id && !user.googleId && (
         <div className="navbar-container">
-          <img src={logo} alt="logo" onClick={() => window.location.href = '/'}/>
+          <img src={logo} width="100%" height="100%" alt="logo" onClick={() => window.location.href = '/'}/>
           <div className="button-container">
             <Home />
             <Settings />
