@@ -23,7 +23,7 @@ export default function PasswordResetRequest() {
     <div className="password-reset-request-container">
       <h2>Forgot Password?</h2>
       <p>Enter email to reset your password.</p>
-      <input autocomplete="on" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <input autoComplete="on" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
       <button onClick={() => handleSubmit(email)}>Reset Password</button>
     </div>
   )

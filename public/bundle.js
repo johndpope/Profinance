@@ -11804,7 +11804,7 @@ function PasswordResetRequest() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "password-reset-request-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Forgot Password?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Enter email to reset your password."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    autocomplete: "on",
+    autoComplete: "on",
     type: "email",
     placeholder: "Email",
     onChange: function onChange(e) {

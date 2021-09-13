@@ -6,8 +6,6 @@ const { google } = require('googleapis');
 const { User, Token } = require('../db/models')
 module.exports = router;
 
-const url = process.env.NODE_ENV === 'production' ? 'https://iangelfand-profinance.herokuapp.com' : 'http://localhost:3000';
-
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
@@ -44,7 +42,7 @@ router.post('/', async (req, res, next) => {
         token: hash,
         createdAt: Date.now(),
       }).save();
-      const link = `${url}/reset-password/${user._id}/${resetToken}`;
+      const link = `${process.env.link}/reset-password/${user._id}/${resetToken}`;
       if(err) console.log(err)
       if(!user) {
         console.log('no user') 
