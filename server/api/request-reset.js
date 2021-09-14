@@ -59,7 +59,9 @@ router.post('/', async (req, res, next) => {
             to: `${email}`,
             subject: 'Password Reset',
             text: 'Password Reset',
-            html: `<a href="${link}">Reset Password</a>`,
+            html: `
+            <p>Link is valid for 60 minutes.</p>
+            <a href="${link}">Reset Password</a>`,
           };
           const result = await transport.sendMail(mailOptions);
           return result;
